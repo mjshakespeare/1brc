@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "QuickRun": {
+      "commandName": "Project",
+      "commandLineArgs": "--rows 500000000"
+    }
+  }
+}

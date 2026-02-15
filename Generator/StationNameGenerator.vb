@@ -1,35 +1,21 @@
-﻿Imports Generator.Extensions
-Imports ShowsOnSale.World
+﻿Imports System.IO
+Imports System.Security.Cryptography
 
 Public Module StationNameGenerator
-    public Function GenerateStationNames(count as Integer) As List(Of String)
-        Dim stations = New HashSet(Of String)()
+    public Function GenerateStationNames(count as Integer) As String()
+        dim worldCities = File.ReadLines("worldcities.csv").ToArray()
+        dim stations = new String(count - 1) {}
 
-        Dim i = 0
-        While i < count
-            Dim cityName = SelectCityName()
+        For i = 0 To stations.Length - 1
+            stations(i) = SelectStation(worldCities)
+        Next
 
-            If stations.Add(cityName) Then
-                i = i + 1
-            End If
-        End While
-
-        Return stations.ToList()
+        Return stations
     End Function
 
-    Private Function SelectCityName() As String
-        Dim country = WorldData.All.RandomElement()
+    Private Function SelectStation(lines As String()) As String
+        Dim selectedStation = RandomNumberGenerator.GetInt32(0, lines.Length)
 
-        If country.States.Count = 0 Then
-            return country.Capital
-        End If
-
-        Dim state = country.States.RandomElement()
-
-        If state.Cities.Count = 0 Then
-            Return country.Capital
-        End If
-
-        Return state.Cities.RandomElement().Name
+        Return lines(selectedStation).Split(","c)(0).Trim(""""c)
     End Function
 End Module
