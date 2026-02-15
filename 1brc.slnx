@@ -1,5 +1,12 @@
 <Solution>
+  <Folder Name="/SolutionItems/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/Generator/Generator.vbproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="test/Generator.Tests/Generator.Tests.csproj" />
   </Folder>
 </Solution>

@@ -75,11 +75,11 @@ Partial Public NotInheritable Class WeatherStationDataGenerator
     End Sub
 
     Private Shared Function GenerateBatchSizes(totalRows As Long, batchSize As Integer) As Integer()
-        Dim batchCount As Integer = Math.Ceiling(totalRows \ batchSize)
+        Dim batchCount As Integer = Math.Ceiling(totalRows / batchSize)
 
         Dim batches As Integer() = Enumerable.Repeat(batchSize, batchCount).ToArray()
 
-        batches(batches.Length - 1) += totalRows Mod batchSize
+        batches(batches.Length - 1) += totalRows - (batchCount * batchSize)
 
         Return batches
     End Function
