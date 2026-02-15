@@ -16,6 +16,10 @@ Public Module StationNameGenerator
     Private Function SelectStation(lines As String()) As String
         Dim selectedStation = RandomNumberGenerator.GetInt32(0, lines.Length)
 
-        Return lines(selectedStation).Split(","c)(0).Trim(""""c)
+        Dim stationLine = lines(selectedStation)
+
+        Dim indexOfFirstComma = stationLine.IndexOf(","c)
+
+        Return stationLine.Substring(0, indexOfFirstComma)
     End Function
 End Module

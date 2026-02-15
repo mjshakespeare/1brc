@@ -2,7 +2,7 @@
 Imports System.Security.Cryptography
 
 Namespace Extensions
-    Public Module ListExtensions
+    Public Module ArrayExtensions
 
         <Extension>
         Public Function RandomElement(Of T)(source As T()) As T
